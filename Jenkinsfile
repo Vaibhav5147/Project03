@@ -25,5 +25,15 @@ pipeline {
         bat 'mvn clean package'
       }
     }
+    stage('SAST')
+    {
+      steps
+      {
+        withSonarQubeEnv('DevsecopsPractice03'){
+          bat 'mvn sonar:sonar'
+          bat 'cat target/sonar/report-task.txt'
+        }
+      }
+    }
   }
 }
