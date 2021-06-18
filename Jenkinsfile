@@ -39,10 +39,7 @@ pipeline {
     {
       steps 
       {
-        sshagent(credentials: ['tomcatdeployment'])
-        {
-               bat 'scp -o StrictHostKeyChecking=no target/*.war C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/webapps.war'
-        }            
+         bat "copy target\\JenkinsWar.war \"${C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps}\\JenkinsWar.war\""            
       }
     }
   }
