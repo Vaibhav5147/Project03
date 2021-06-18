@@ -29,7 +29,7 @@ pipeline {
     {
       steps
       {
-        withSonarQubeEnv('DevsecopsPractice03'){
+        withSonarQubeEnv('Sonar'){
           bat 'mvn sonar:sonar'
           bat 'cat target/sonar/report-task.txt'
         }
