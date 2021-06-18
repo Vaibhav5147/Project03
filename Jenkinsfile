@@ -35,5 +35,15 @@ pipeline {
         }
       }
     }
+    stage ('Deploy-To-Tomcat')
+    {
+      steps 
+      {
+        sshagent(credentials: ['tomcatdeployment'])
+        {
+               bat 'scp -o StrictHostKeyChecking=no target/*.war C:\Program Files\Apache Software Foundation\Tomcat 9.0\webapps'
+        }            
+      }
+    }
   }
 }
